@@ -1,15 +1,22 @@
-<div>
-  {{inbox.inboxSubject}}</div>
+<div fxLayout="row" fxLayoutAlign="start center">
+  <button mat-flat-button color="primary" (click)='goBack()'>
+    Back
+  </button>
+</div>
 
-<h5>
-  {{inbox.inboxFrom}}
-</h5>
-{{inbox.recieved}}
+<div fxLayout="row" fxLayoutAlign="start center">
+  {{inbox.inboxSubject}}
+</div>
 
-to me
+<div fxLayout="row" fxLayoutAlign="start center">
+  <div fxFlex="60">
+    {{inbox.inboxFrom}}
+  </div>
+  <div fxFlex="30">
+    {{inbox.recieved}} to me
+  </div>
+</div>
 
-<div innerHTML={{inbox.inboxBody}}></div>
-
-
-<button mat-button (click)='onBack()'>Back
-</button>
+<div fxLayout="row" fxLayoutAlign="start center">
+  <p innerHTML={{inbox.inboxBody}}></p>
+</div>

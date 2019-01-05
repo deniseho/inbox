@@ -2,9 +2,9 @@
 
   <mat-sidenav fxLayout="column" mode="side" opened="true">
 
-    <div fxLayout="column">
-      <a [routerLink]="['/inbox']" mat-button>Inbox</a>
-      <a [routerLink]="['/sent']" mat-button>Sent</a>
+    <div fxLayout="column" class="menu">
+      <a mat-flat-button class="menu-item" [routerLink]="['/inbox']">Inbox</a>
+      <a mat-flat-button class="menu-item" [routerLink]="['/sent']">Sent</a>
     </div>
 
   </mat-sidenav>

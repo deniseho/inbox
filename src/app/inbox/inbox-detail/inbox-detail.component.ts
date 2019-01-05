@@ -3,9 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IInbox } from '../inbox.model';
 import { InboxService } from '../inbox.service';
 
-// const ELEMENT_DATA: IInbox[] = [];
-
-
 @Component({
   selector: 'app-inbox-detail',
   templateUrl: './inbox-detail.component.html',
@@ -14,7 +11,7 @@ import { InboxService } from '../inbox.service';
 export class InboxDetailComponent implements OnInit {
 
   inbox: IInbox | undefined;
-  errorMessage = '';
+  errorMessage: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,7 +23,6 @@ export class InboxDetailComponent implements OnInit {
      const param = this.route.snapshot.paramMap.get('id');
      if (param) {
        const id = +param;
-       console.log('inbox detail id' + id);
        this.getInbox(id);
      }
   }
@@ -37,7 +33,7 @@ export class InboxDetailComponent implements OnInit {
       error => this.errorMessage = <any>error);
   }
 
-  onBack(): void {
+  goBack(): void {
     this.router.navigate(['/inbox']);
   }
 }

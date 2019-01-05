@@ -1,17 +1,17 @@
 <mat-table [dataSource]="inboxList">
   <ng-container matColumnDef="inboxFrom">
-    <mat-header-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="20%" *matHeaderCellDef>From</mat-header-cell>
-    <mat-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="20%" *matCellDef="let row">{{ row.inboxFrom }}</mat-cell>
+    <mat-header-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="20" *matHeaderCellDef>From</mat-header-cell>
+    <mat-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="20" *matCellDef="let row">{{ row.inboxFrom }}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="inboxSubject">
-    <mat-header-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="50%" *matHeaderCellDef>Subject</mat-header-cell>
-    <mat-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="50%" *matCellDef="let row">
+    <mat-header-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="50" *matHeaderCellDef>Subject</mat-header-cell>
+    <mat-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="50" *matCellDef="let row">
         {{ row.inboxSubject }}
     </mat-cell>
   </ng-container>
   <ng-container matColumnDef="recieved">
-    <mat-header-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="10%" *matHeaderCellDef>Received</mat-header-cell>
-    <mat-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="10%" *matCellDef="let row">{{ row.recieved }}</mat-cell>
+    <mat-header-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="10" *matHeaderCellDef>Received</mat-header-cell>
+    <mat-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="10" *matCellDef="let row">{{ row.recieved }}</mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

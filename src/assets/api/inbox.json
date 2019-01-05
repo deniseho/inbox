@@ -3,21 +3,21 @@
     "inboxId": 1,
     "inboxFrom": "Amy",
     "inboxSubject": "Happy new year from Amy!",
-    "inboxBody": "<h1>Happy new year from Amy!</h1>",
+    "inboxBody": "<h4>Happy new year from Amy!</h4>",
     "recieved": "Jan 2, 11:01"
   },
   {
     "inboxId": 2,
     "inboxFrom": "Tom",
     "inboxSubject": "Happy new year from Tom!",
-    "inboxBody": "<h1>Happy new year from Tom!</h1>",
+    "inboxBody": "<em>Happy new year from Tom!</em>",
     "recieved": "Jan 3, 12:02"
   },
   {
     "inboxId": 3,
     "inboxFrom": "Richard",
     "inboxSubject": "Happy new year from Richard!",
-    "inboxBody": "<h1>Happy new year from Richard!</h1>",
+    "inboxBody": "<h2>Happy new year from Richard!</h2>",
     "recieved": "Jan 3, 13:11"
   }
 ]
