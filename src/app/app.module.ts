@@ -5,26 +5,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule, MatButtonModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
-import { InboxListComponent } from './inbox/inbox-list/inbox-list.component';
-import { InboxDetailComponent } from './inbox/inbox-detail/inbox-detail.component';
+import { HttpClientModule } from '@angular/common/http';
+import { InboxModule } from './inbox/inbox.module';
 
-@NgModule({
+@NgModule( {
   declarations: [
     AppComponent,
-    InboxListComponent,
-    InboxDetailComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatSidenavModule,
     MatButtonModule,
     FlexLayoutModule,
-    // RouterModule.forRoot([
-    //   { path: 'inbox', }
-    // ])
+    RouterModule.forRoot( [
+      // { path: 'sent', component: SentComponent },
+      { path: '', redirectTo: 'inbox', pathMatch: 'full' },
+      { path: '**', redirectTo: 'inbox', pathMatch: 'full' }
+    ] ),
+    InboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
-})
+} )
 export class AppModule { }
