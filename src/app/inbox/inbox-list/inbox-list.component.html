@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <th>From</th>
+      <th>Subject</th>
+      <th>Recieved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let inbox of inboxList">
+      <td>
+        {{inbox.inboxFrom}}
+      </td>
+      <td>
+        <a [routerLink]="['/inbox', inbox.inboxId]">
+          {{inbox.inboxSubject}}
+        </a>
+      </td>
+      <td>
+        {{inbox.recieved}}
+      </td>
+    </tr>
+  </tbody>
+</table>
