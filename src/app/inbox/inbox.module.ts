@@ -4,10 +4,13 @@ import { RouterModule } from '@angular/router';
 import { InboxService } from './inbox.service';
 import { InboxListComponent } from './inbox-list/inbox-list.component';
 import { InboxDetailComponent } from './inbox-detail/inbox-detail.component';
+import { MatTableModule, MatButtonModule } from '@angular/material';
 
 @NgModule( {
   imports: [
     CommonModule,
+    MatTableModule,
+    MatButtonModule,
     RouterModule.forChild( [
       {
         path: 'inbox',

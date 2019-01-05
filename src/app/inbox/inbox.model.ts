@@ -1,5 +1,5 @@
 export interface IInbox {
-  inboxId: string;
+  inboxId: number;
   inboxFrom: string;
   inboxSubject: string;
   inboxBody: string;

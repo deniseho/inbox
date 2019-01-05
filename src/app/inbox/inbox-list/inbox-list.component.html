@@ -1,4 +1,4 @@
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th>From</th>
@@ -21,4 +21,26 @@
       </td>
     </tr>
   </tbody>
-</table>
+</table> -->
+
+<mat-table [dataSource]="inboxList">
+  <ng-container matColumnDef="inboxFrom">
+    <mat-header-cell *matHeaderCellDef>From</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.inboxFrom }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="inboxSubject">
+    <mat-header-cell *matHeaderCellDef>Subject</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <a [routerLink]="['/inbox', row.inboxId]">
+        {{ row.inboxSubject }}
+      </a>
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="recieved">
+    <mat-header-cell *matHeaderCellDef>Received</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.recieved }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="['inboxFrom', 'inboxSubject', 'recieved']"></mat-header-row>
+  <mat-row *matRowDef="let emailRow; columns: ['inboxFrom', 'inboxSubject', 'recieved']"></mat-row>
+</mat-table>

@@ -1,26 +1,36 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { IInbox } from './inbox.model';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/do';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap, map } from 'rxjs/operators';
 
 @Injectable()
 export class InboxService {
-  private _inboxUrl = './api/inbox/inbox.json';
+  private inboxUrl = 'assets/api/inbox.json';
 
-  constructor(private _http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getInboxList(): Observable<IInbox[]> {
-    console.log(this._inboxUrl);
-    return this._http.get<IInbox[]>(this._inboxUrl)
-      .do(data => console.log('inbox list: ' + JSON.stringify(data)))
-      .catch(this.handleError);
+    return this.http.get<IInbox[]>(this.inboxUrl).pipe(
+      tap(data => console.log('inbox list: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+    );
+  }
+
+  getInboxDetail(id: number): Observable<IInbox | undefined> {
+    return this.getInboxList().pipe(
+      map((inboxList: IInbox[]) => inboxList.find(mail => mail.inboxId === id))
+    );
   }
 
   private handleError(err: HttpErrorResponse) {
-    console.error(err.message);
-    return Observable.throw(err.message);
+    let errorMessage = '';
+    if (err.error instanceof ErrorEvent) {
+      errorMessage = `An error occurred: ${err.error.message}`;
+    } else {
+      errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(errorMessage);
   }
 }

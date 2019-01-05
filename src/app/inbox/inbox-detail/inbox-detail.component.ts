@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IInbox } from '../inbox.model';
+import { InboxService } from '../inbox.service';
+
+// const ELEMENT_DATA: IInbox[] = [];
+
 
 @Component({
   selector: 'app-inbox-detail',
@@ -9,24 +13,31 @@ import { IInbox } from '../inbox.model';
 })
 export class InboxDetailComponent implements OnInit {
 
-  // subject: string;
-  inbox: IInbox;
+  inbox: IInbox | undefined;
+  errorMessage = '';
 
   constructor(
-    private _route: ActivatedRoute,
-    private _router: Router
+    private route: ActivatedRoute,
+    private router: Router,
+    private inboxService: InboxService
     ) { }
 
   ngOnInit() {
-     const id = this._route.snapshot.paramMap.get('id');
-    //  this.subject = `Mail ID: ${id}`;
-     this.inbox = {
-       'inboxId': id,
-       'inboxFrom': 'from',
-       'inboxSubject': 'subject',
-       'inboxBody': '<h1>Hi</h1>',
-       'recieved': '2019'
-     };
+     const param = this.route.snapshot.paramMap.get('id');
+     if (param) {
+       const id = +param;
+       console.log('inbox detail id' + id);
+       this.getInbox(id);
+     }
   }
 
+  getInbox(id: number) {
+    this.inboxService.getInboxDetail(id).subscribe(
+      data => this.inbox = data,
+      error => this.errorMessage = <any>error);
+  }
+
+  onBack(): void {
+    this.router.navigate(['/inbox']);
+  }
 }
