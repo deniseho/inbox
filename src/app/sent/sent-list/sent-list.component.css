@@ -1,0 +1,5 @@
+.mat-row.hovered {
+  background: rgb(254, 252, 225);
+  cursor: pointer;
+  transition: 300ms linear;
+}

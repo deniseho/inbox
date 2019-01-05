@@ -1,0 +1,23 @@
+[
+  {
+    "sentId": 1,
+    "sentTo": "David",
+    "sentSubject": "Sorry",
+    "sentBody": "I can't go to the party tonight. Have fun!",
+    "sentTime": "Dec 25, 14:21"
+  },
+  {
+    "sentId": 2,
+    "sentTo": "Sue",
+    "sentSubject": "Reimbursement",
+    "sentBody": "I will tell you the detiail of the reimburesement process tomorrow.",
+    "sentTime": "Dec 26, 12:39"
+  },
+  {
+    "sentId": 3,
+    "sentTo": "Kate",
+    "sentSubject": "Thank you",
+    "sentBody": "Hey Kate,<br/> Thank you your company today!<br/> Denise",
+    "sentTime": "Dec 29, 01:54"
+  }
+]

@@ -1,3 +1,25 @@
-<p>
-  sent-list works!
-</p>
+<mat-table [dataSource]="sentList">
+    <ng-container matColumnDef="sentTo">
+      <mat-header-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="20" *matHeaderCellDef>To</mat-header-cell>
+      <mat-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="20" *matCellDef="let row">{{ row.sentTo }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="sentSubject">
+      <mat-header-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="50" *matHeaderCellDef>Subject</mat-header-cell>
+      <mat-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="50" *matCellDef="let row">
+          {{ row.sentSubject }}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="sentTime">
+      <mat-header-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="10" *matHeaderCellDef>Sent Time</mat-header-cell>
+      <mat-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="10" *matCellDef="let row">{{ row.sentTime }}</mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"
+        [ngClass]="{hovered: row.hovered}" 
+        (click)="goto(row.sentId)" 
+        (mouseover)="row.hovered = true" 
+        (mouseout)="row.hovered = false">
+    </mat-row>
+  
+  </mat-table>

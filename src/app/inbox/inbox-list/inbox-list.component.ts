@@ -14,7 +14,7 @@ export class InboxListComponent implements OnInit {
 
   errorMessage: any;
 
-  inboxList = new MatTableDataSource<any>();
+  inboxList = new MatTableDataSource<IInbox>();
   displayedColumns = ['inboxFrom', 'inboxSubject', 'recieved'];
 
   constructor(

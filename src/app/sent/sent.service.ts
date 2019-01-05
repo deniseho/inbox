@@ -4,9 +4,7 @@ import { ISent } from './sent.model';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SentService {
   private sentUrl = 'assets/api/sent.json';
 
@@ -14,12 +12,12 @@ export class SentService {
 
   getSentList(): Observable<ISent[]> {
     return this.http.get<ISent[]>(this.sentUrl).pipe(
-      tap(data => console.log('inbox list: ' + JSON.stringify(data))),
+      tap(data => console.log('sent list: ' + JSON.stringify(data))),
         catchError(this.handleError)
     );
   }
 
-  getInboxDetail(id: number): Observable<ISent | undefined> {
+  getSentDetail(id: number): Observable<ISent | undefined> {
     return this.getSentList().pipe(
       map((sentList: ISent[]) => sentList.find(mail => mail.sentId === id))
     );

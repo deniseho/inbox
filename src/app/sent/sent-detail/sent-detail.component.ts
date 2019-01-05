@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ISent } from '../sent.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SentService } from '../sent.service';
 
 @Component({
   selector: 'app-sent-detail',
@@ -7,9 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SentDetailComponent implements OnInit {
 
-  constructor() { }
+  sent: ISent | undefined;
+  errorMessage: string;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private sentService: SentService
+  ) { }
 
   ngOnInit() {
+    const param = this.route.snapshot.paramMap.get('id');
+    if (param) {
+      const id = +param;
+      this.getSent(id);
+    }
+  }
+
+  getSent(id: number) {
+    this.sentService.getSentDetail(id)
+    .subscribe(
+      data => this.sent = data,
+      error => this.errorMessage = <any>error);
+  }
+
+  goBack(): void {
+    this.router.navigate(['/sent']);
   }
 
 }
