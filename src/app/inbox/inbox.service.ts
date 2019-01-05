@@ -8,15 +8,17 @@ import 'rxjs/add/operator/do';
 
 @Injectable()
 export class InboxService {
-  private _inboxUrl = './api/inbox.json';
+  private _inboxUrl = './api/inbox/inbox.json';
 
   constructor(private _http: HttpClient) { }
 
   getInboxList(): Observable<IInbox[]> {
+    console.log(this._inboxUrl);
     return this._http.get<IInbox[]>(this._inboxUrl)
       .do(data => console.log('inbox list: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
+
   private handleError(err: HttpErrorResponse) {
     console.error(err.message);
     return Observable.throw(err.message);
