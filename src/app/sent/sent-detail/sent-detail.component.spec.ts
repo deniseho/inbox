@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SentComponent } from './sent.component';
+import { SentDetailComponent } from './sent-detail.component';
 
-describe('SentComponent', () => {
-  let component: SentComponent;
-  let fixture: ComponentFixture<SentComponent>;
+describe('SentDetailComponent', () => {
+  let component: SentDetailComponent;
+  let fixture: ComponentFixture<SentDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SentComponent ]
+      declarations: [ SentDetailComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SentComponent);
+    fixture = TestBed.createComponent(SentDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

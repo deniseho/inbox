@@ -7,12 +7,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { InboxModule } from './inbox/inbox.module';
-import { SentComponent } from './sent/sent.component';
+import { SentModule } from './sent/sent.module';
 
 @NgModule( {
   declarations: [
     AppComponent,
-    SentComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,11 +21,12 @@ import { SentComponent } from './sent/sent.component';
     MatButtonModule,
     FlexLayoutModule,
     RouterModule.forRoot( [
-      { path: 'sent', component: SentComponent },
-      // { path: '', redirectTo: 'inbox', pathMatch: 'full' },
-      // { path: '**', redirectTo: 'inbox', pathMatch: 'full' }
+      // { path: 'sent', component: SentComponent },
+      { path: '', redirectTo: 'inbox', pathMatch: 'full' },
+      { path: '**', redirectTo: 'inbox', pathMatch: 'full' }
     ] ),
     InboxModule,
+    SentModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
