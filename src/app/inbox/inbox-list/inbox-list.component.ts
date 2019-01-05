@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IInbox } from '../inbox.model';
+import { InboxService } from '../inbox.service';
 
 @Component({
   selector: 'app-inbox-list',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InboxListComponent implements OnInit {
 
-  constructor() { }
+  inboxList: IInbox[] = [];
+  errorMessage: any;
+
+  constructor(private _inboxService: InboxService) { }
 
   ngOnInit() {
+    this._inboxService.getInboxList()
+    .subscribe(data => {
+      this.inboxList = data;
+    },
+    error => this.errorMessage = <any>error);
   }
-
 }
