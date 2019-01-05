@@ -5,12 +5,14 @@ import { InboxService } from './inbox.service';
 import { InboxListComponent } from './inbox-list/inbox-list.component';
 import { InboxDetailComponent } from './inbox-detail/inbox-detail.component';
 import { MatTableModule, MatButtonModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule( {
   imports: [
     CommonModule,
     MatTableModule,
     MatButtonModule,
+    FlexLayoutModule,
     RouterModule.forChild( [
       {
         path: 'inbox',

@@ -3,6 +3,7 @@ import { IInbox } from '../inbox.model';
 import { InboxService } from '../inbox.service';
 import { MatTableDataSource } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inbox-list',
@@ -11,13 +12,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class InboxListComponent implements OnInit {
 
-  // inboxList: IInbox[] = [];
   errorMessage: any;
 
   inboxList = new MatTableDataSource<any>();
+  displayedColumns = ['inboxFrom', 'inboxSubject', 'recieved'];
 
-
-  constructor(private httpClient: HttpClient,
+  constructor(
+    private router: Router,
     private inboxService: InboxService) { }
 
   ngOnInit() {
@@ -26,8 +27,9 @@ export class InboxListComponent implements OnInit {
       this.inboxList.data = data;
     },
     error => this.errorMessage = <any>error);
-    // this.httpClient.get<any>('https://api.github.com/search/issues?q=repo:angular/material2&page=1').subscribe(data => {
-    //   this.emailsDataSource.data = data.items;
-    // });
+  }
+
+  goto(id) {
+    this.router.navigate(['/inbox', id]);
   }
 }

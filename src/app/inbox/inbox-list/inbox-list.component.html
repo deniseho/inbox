@@ -1,46 +1,25 @@
-<!-- <table>
-  <thead>
-    <tr>
-      <th>From</th>
-      <th>Subject</th>
-      <th>Recieved</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let inbox of inboxList">
-      <td>
-        {{inbox.inboxFrom}}
-      </td>
-      <td>
-        <a [routerLink]="['/inbox', inbox.inboxId]">
-          {{inbox.inboxSubject}}
-        </a>
-      </td>
-      <td>
-        {{inbox.recieved}}
-      </td>
-    </tr>
-  </tbody>
-</table> -->
-
 <mat-table [dataSource]="inboxList">
   <ng-container matColumnDef="inboxFrom">
-    <mat-header-cell *matHeaderCellDef>From</mat-header-cell>
-    <mat-cell *matCellDef="let row">{{ row.inboxFrom }}</mat-cell>
+    <mat-header-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="20%" *matHeaderCellDef>From</mat-header-cell>
+    <mat-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="20%" *matCellDef="let row">{{ row.inboxFrom }}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="inboxSubject">
-    <mat-header-cell *matHeaderCellDef>Subject</mat-header-cell>
-    <mat-cell *matCellDef="let row">
-      <a [routerLink]="['/inbox', row.inboxId]">
+    <mat-header-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="50%" *matHeaderCellDef>Subject</mat-header-cell>
+    <mat-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="50%" *matCellDef="let row">
         {{ row.inboxSubject }}
-      </a>
     </mat-cell>
   </ng-container>
   <ng-container matColumnDef="recieved">
-    <mat-header-cell *matHeaderCellDef>Received</mat-header-cell>
-    <mat-cell *matCellDef="let row">{{ row.recieved }}</mat-cell>
+    <mat-header-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="10%" *matHeaderCellDef>Received</mat-header-cell>
+    <mat-cell fxLayout="row" fxLayoutAlign="start center" fxFlex="10%" *matCellDef="let row">{{ row.recieved }}</mat-cell>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="['inboxFrom', 'inboxSubject', 'recieved']"></mat-header-row>
-  <mat-row *matRowDef="let emailRow; columns: ['inboxFrom', 'inboxSubject', 'recieved']"></mat-row>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"
+      [ngClass]="{hovered: row.hovered}" 
+      (click)="goto(row.inboxId)" 
+      (mouseover)="row.hovered = true" 
+      (mouseout)="row.hovered = false">
+  </mat-row>
+
 </mat-table>
