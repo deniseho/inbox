@@ -4,19 +4,22 @@
   </button>
 </div>
 
-<div fxLayout="row" fxLayoutAlign="start center">
-  {{inbox.inboxSubject}}
-</div>
+<div *ngIf='inbox'>
 
-<div fxLayout="row" fxLayoutAlign="start center">
-  <div fxFlex="60">
-    {{inbox.inboxFrom}}
+  <div fxLayout="row" fxLayoutAlign="start center">
+    {{inbox.inboxSubject}}
   </div>
-  <div fxFlex="30">
-    {{inbox.recieved}} to me
-  </div>
-</div>
 
-<div fxLayout="row" fxLayoutAlign="start center">
-  <p innerHTML={{inbox.inboxBody}}></p>
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <div fxFlex="60">
+      {{inbox.inboxFrom}}
+    </div>
+    <div fxFlex="30">
+      {{inbox.recieved}} to me
+    </div>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <p innerHTML={{inbox.inboxBody}}></p>
+  </div>
 </div>

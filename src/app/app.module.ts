@@ -21,7 +21,6 @@ import { SentModule } from './sent/sent.module';
     MatButtonModule,
     FlexLayoutModule,
     RouterModule.forRoot( [
-      // { path: 'sent', component: SentComponent },
       { path: '', redirectTo: 'inbox', pathMatch: 'full' },
       { path: '**', redirectTo: 'inbox', pathMatch: 'full' }
     ] ),

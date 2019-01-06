@@ -1,6 +1,9 @@
 mat-sidenav {
-  width: 20%; 
   background: aliceblue;
+}
+
+mat-sidenav-content {
+  padding: 20px;
 }
 
 .menu {

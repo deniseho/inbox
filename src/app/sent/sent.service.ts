@@ -4,7 +4,9 @@ import { ISent } from './sent.model';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SentService {
   private sentUrl = 'assets/api/sent.json';
 

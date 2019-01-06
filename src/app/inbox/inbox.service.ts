@@ -4,7 +4,9 @@ import { IInbox } from './inbox.model';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class InboxService {
   private inboxUrl = 'assets/api/inbox.json';
 

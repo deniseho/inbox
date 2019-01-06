@@ -1,13 +1,14 @@
 <div fxLayout="row" fxLayoutAlign="start center">
-    <button mat-flat-button color="primary" (click)='goBack()'>
-      Back
-    </button>
-  </div>
-  
+  <button mat-flat-button color="primary" (click)='goBack()'>
+    Back
+  </button>
+</div>
+
+<div *ngIf='sent'>
   <div fxLayout="row" fxLayoutAlign="start center">
     {{sent.sentSubject}}
   </div>
-  
+
   <div fxLayout="row" fxLayoutAlign="start center">
     <div fxFlex="60">
       {{sent.sentTo}}
@@ -16,7 +17,8 @@
       {{sent.sentTime}}
     </div>
   </div>
-  
+
   <div fxLayout="row" fxLayoutAlign="start center">
     <p innerHTML={{sent.sentBody}}></p>
   </div>
+</div>
